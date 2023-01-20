@@ -1,0 +1,27 @@
+                                  
+<x-adminlte-datatable id="table_invoices" :heads="$heads_client_current" :config="$config"  striped>
+@php
+ 
+
+                                          
+foreach($sales as $sale) {
+       echo '<tr><td>'.$sale->moto_group.'</td><td >'.$sale->year_sold.'</td><td >'.$sale->units.'</td><td >'.$sale->turnover.'</td><td >'.$sale->year_sold.'</td></tr>';
+   
+ 
+}
+
+echo '<tfoot><tr><td></td><td></td><td></td><td></td></tr></tfoot>';
+
+
+@endphp
+                                           
+                                           
+</x-adminlte-datatable>
+                           
+
+
+
+
+
+
+ 

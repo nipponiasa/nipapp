@@ -1,0 +1,23 @@
+.buttons-excel
+{color:white;
+  background-color: #28a745;
+margin:2px;
+}
+
+.buttons-pdf
+{color:white;
+  background-color: #dc3545;
+margin:2px;
+}
+
+.modelseuro
+{
+  
+  text-align: right;
+
+}
+
+.modelseurototal {
+
+  font-weight: bold;
+}
