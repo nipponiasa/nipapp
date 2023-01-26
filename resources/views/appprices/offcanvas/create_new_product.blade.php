@@ -47,6 +47,7 @@
                               <option value="FD">FD</option>
                               <option value="DAYANG" selected>DAYANG</option>
                               <option value="DOOHAN">DOOHAN</option>
+                              <option value="KAITONG">KAITONG</option>
                               <option value="LIFAN">LIFAN</option>
                               <option value="LIMA">LIMA</option>
                               <option value="NIPPUESTO">NIPPUESTO</option>
@@ -56,8 +57,8 @@
                               <option value="VIGOROUS">VIGOROUS</option>
                               <option value="YINGANG">YINGANG</option>
                               <option value="ZXMCO">ZXMCO</option>
-
-
+                              
+                              
 
                   </select>
                   </div>     
