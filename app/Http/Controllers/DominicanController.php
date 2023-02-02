@@ -36,7 +36,7 @@ FROM `sales_year_rd` WHERE (NOT altcode=\"BDA\") AND (NOT altcode=\"MID\") AND (
     $current_customer_alt=$this->customer_altcode($current_customer);
     
     //$years= DB::select("SELECT DISTINCT year_sold FROM sales_year_rd WHERE altcode='".$current_customer."';");
-    $sales= DB::select("SELECT  moto_group as moto_description,year_sold, SUM(units) as units, SUM(turnover) as turnover FROM sales_year_rd WHERE  turnover!=0.0 AND year_sold>2019 AND (altcode='".$current_customer."' or altcode='".$current_customer_alt."') GROUP BY moto_group, moto_description,year_sold ORDER BY moto_description    ;");
+    $sales= DB::select("SELECT moto_group as moto_description,year_sold, SUM(units) as units, SUM(turnover) as turnover FROM sales_year_rd WHERE turnover!=0.0 AND year_sold>2019 AND (altcode='".$current_customer."' or altcode='".$current_customer_alt."') GROUP BY moto_group,year_sold ORDER BY moto_description ;");
     //dd($sales);
 foreach($sales as $sale)
 

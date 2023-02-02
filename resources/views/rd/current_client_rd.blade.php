@@ -219,7 +219,7 @@ if(array_key_exists('0',$customer_balance)){
         <div class="card-header">
           <h3 class="card-title">
             <i class="far fa-chart-bar"></i>
-           Sales  amount (units)  per model
+           Sales amount (units) per model
           </h3>
 
           <div class="card-tools">
