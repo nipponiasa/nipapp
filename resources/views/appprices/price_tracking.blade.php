@@ -41,7 +41,7 @@ $config = [
 ];
        
 
-$config['paging'] = false;
+// $config['paging'] = true;
 $config["lengthMenu"] = [ 20, 50, 100, 500];
 @endphp
  <!-- create new product modal -->
@@ -123,7 +123,7 @@ $config["lengthMenu"] = [ 20, 50, 100, 500];
                                    @else
                                   <button class="btn btn-xs btn-default text-teal mx-1 shadow"  title="Show Document"><i style ="color:grey;" class="fa fa-lg fa-fw fa-file-pdf"></i></button>
                                    @endif
-                                            <a onclick="confirmdelete()" id="trash" href=@php echo url("/price_delete_form?priceid={$price->id}"); @endphp><button class="btn btn-xs btn-default text-primary mx-1 shadow"   title="Trash"><i class="fa fa-lg fa-fw fa-trash"></i></button></a> 
+                                            <a onclick="return confirm('Delete item?');" id="trash" href=@php echo url("/price_delete_form?priceid={$price->id}"); @endphp><button class="btn btn-xs btn-default text-primary mx-1 shadow"   title="Trash"><i class="fa fa-lg fa-fw fa-trash"></i></button></a> 
                                         </td></tr>
                             @endforeach
            </x-adminlte-datatable>

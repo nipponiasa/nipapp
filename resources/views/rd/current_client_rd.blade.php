@@ -24,6 +24,8 @@ $heads_client_current = [
   ['label' => ''],
   ['label' => '2022'],
   ['label' => ''],
+  ['label' => '2023'],
+  ['label' => ''],
   ['label' => 'Total'],
   ['label' => ''],
   ];
@@ -31,10 +33,11 @@ $heads_client_current = [
 
   $configsales = [
 
-// 'order' => [[2, 'asc']],
-//'columns' => [['orderable' => false,'visible'=> true, 'className' => 'text-center','width'=> '5%' ], ['className' => 'text-center wrap','width'=> '7%'], ['className' => 'text-center'], ['className' => 'text-center'], ['className' => 'text-center'] , ['className' => 'text-center']],
+
 'columns' => [
  ['orderable' => true,'visible'=> true, 'className' => 'text-left wrap' ],
+ ['orderable' => true,'className' => 'text-right'],
+ ['orderable' => true,'className' => 'text-left'],
  ['orderable' => true,'className' => 'text-right'],
  ['orderable' => true,'className' => 'text-left'],
  ['orderable' => true,'className' => 'text-right'],
