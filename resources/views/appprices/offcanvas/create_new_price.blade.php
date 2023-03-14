@@ -56,8 +56,8 @@
                         <label for="product">Product</label>
                         <select class="form-control" name="product" id="product"   required>
                                <option value="null" selected></option>
-                               @foreach(App\Models\Product::all()  as $product)
-                                          <option value={{ $product->id }}>{{ $product->model }} - {{ $product->country }}</option>
+                               @foreach(App\Models\Product::all()->sortBy(['country','model']) as $product)
+                                          <option value={{ $product->id }}>{{ $product->country }} - {{ $product->model }}</option>
                                @endforeach
                         </select>
                   </div> 

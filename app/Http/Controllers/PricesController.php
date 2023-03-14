@@ -51,7 +51,7 @@ else
 //dd($path);
         if($request->hasFile('proovingdoc'))
         { 
-                $request->validate(['proovingdoc' => 'required|mimes:pdf,xlx,csv|max:2048',]);
+                $request->validate(['proovingdoc' => 'required|mimes:pdf,xlx,csv|max:5000',]);
                 $fileName = time().'.'.$request->proovingdoc->extension();  
                 $request->proovingdoc->move(public_path('uploads'), $fileName);
                 $path='/uploads/'.$fileName;
