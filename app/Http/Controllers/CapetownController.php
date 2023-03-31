@@ -17,13 +17,13 @@ class CapetownController extends Controller
 
 if($month!=0)
 {
-    $total_sales_per_month= DB::select("SELECT ArticuloDescripcion, SUM(Cantidad) as athroisma FROM `saleunitscapetown` where mesfactura=". $month." and anofactura=". $year."  GROUP by ArticuloDescripcion ORDER BY ArticuloDescripcion ASC;");
+    $total_sales_per_month= DB::select("SELECT ArticuloClasificacion1, SUM(Cantidad) as athroisma FROM `saleunitscapetown` where mesfactura=". $month." and anofactura=". $year."  GROUP by ArticuloClasificacion1 ORDER BY ArticuloClasificacion1 ASC;");
     $month_name= date('F', mktime(0, 0, 0, $month, 10)); 
 }
 else
 
 {
-    $total_sales_per_month= DB::select("SELECT ArticuloDescripcion , SUM(Cantidad) as athroisma FROM `saleunitscapetown` where anofactura=". $year."  GROUP by ArticuloDescripcion ORDER BY ArticuloDescripcion ASC;");
+    $total_sales_per_month= DB::select("SELECT ArticuloClasificacion1 , SUM(Cantidad) as athroisma FROM `saleunitscapetown` where anofactura=". $year."  GROUP by ArticuloClasificacion1 ORDER BY ArticuloClasificacion1 ASC;");
     $month_name= ""; 
 
 
@@ -34,7 +34,8 @@ else
       
       // $total_sales_per_month= DB::select("SELECT ArticuloClasificacion1, SUM(Cantidad) as athroisma FROM saleunitscapetown where `FechaFactura`>='2021-12-01' and `Cliente`!='C/F' and `FechaFactura`<'2022-01-01' and `ArticuloDescripcion` like 'MOTO%' GROUP by ArticuloClasificacion1;");
 
-$total_sales_per_month=$this->classify_without_color($total_sales_per_month);
+// $total_sales_per_month=$this->classify_without_color($total_sales_per_month);
+$total_sales_per_month=$this->raw_db_result_to_array($total_sales_per_month);
         //dd($total_sales_per_month);
         //$today=date("Y-m-d");
         //$daily = CurrencyRates::daily();
@@ -217,6 +218,18 @@ $total_sales_per_month=$this->classify_without_color($total_sales_per_month);
     
     }
     
+    // convert raw db result to array (by Dim)
+    public function raw_db_result_to_array($db_result)
+    {
+        $result_array=array();
+        // db_result is an array of objects
+        foreach ($db_result as $object) {
+            $desc=$object->ArticuloClasificacion1;
+            $units=$object->athroisma;
+            $result_array[$desc]= $units;
+        }
+         return  $result_array;
+    }
 
 
 
