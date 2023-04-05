@@ -26,10 +26,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/product_list', function() {return view('appprices.product_list');})->name('product_list')->middleware('auth');
 //Route::get('/product_list', [App\Http\Controllers\ProductController::class, 'list_products'])->name('product_list');
 Route::post('/create_new_product', [App\Http\Controllers\ProductController::class,'create_product'])->name('create_new_product')->middleware('auth');
-//Route::get('/price_tracking', function() {return view('price_tracking');})->name('price_tracking')->middleware('auth');
-//Route::get('/product_list', [App\Http\Controllers\ProductController::class, 'list_products'])->name('product_list');
+Route::post('/product_edit', [App\Http\Controllers\ProductController::class,'edit_product'])->name('product_edit')->middleware('auth');
+Route::get('/product_delete_form', [App\Http\Controllers\ProductController::class, 'delete_product'])->name('product_delete')->middleware('auth');
 Route::post('/create_new_price', [App\Http\Controllers\PricesController::class,'create_price'])->name('create_new_price')->middleware('auth');
-Route::get('/price_tracking', [App\Http\Controllers\PricesController::class,'list_prices'])->name('price_tracking')->middleware('auth');
 Route::get('/price_tracking', [App\Http\Controllers\PricesController::class,'list_prices'])->name('price_tracking')->middleware('auth');
 Route::get('/price_edit_form_modal', [App\Http\Controllers\PricesController::class, 'fetch_price_info_modal'])->name('price_edit_form_modal')->middleware('auth');
 Route::get('/price_delete_form', [App\Http\Controllers\PricesController::class, 'delete_price'])->name('price_delete')->middleware('auth');
