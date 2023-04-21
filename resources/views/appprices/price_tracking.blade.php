@@ -32,12 +32,13 @@ $heads_prices = [
     'Packing',
     'Exact Offer Price',
     'Calculated Price',
+    'Price (€)',
     ['label' => 'Actions', 'no-export' => true],
 
 ];
 $config = [
     'order' => [[1, 'asc']],
-    'columns' => [null, null,null, null, null, null,null,null, ['orderable' => false]],
+    'columns' => [null, null,null, null, null, null,null,null,null, ['orderable' => false]],
 ];
        
 
@@ -86,12 +87,12 @@ $config["lengthMenu"] = [ 20, 50, 100, 500];
                                         if( $price->price_us!=0) 
                                         {
                                             $timi2=$price->price_us;
-                                                        echo number_format($timi2,2).' $ with ex. rate: '.number_format($price->us_yuan_at_date,2);
+                                                        echo number_format($timi2,2).' $ at '.number_format($price->us_yuan_at_date,2);
                                         }
                                         elseif( $price->price_yuan!=0)
                                         {
                                             $timi2=$price->price_yuan;
-                                                        echo number_format($timi2,2).' ¥ with ex. rate: '.number_format($price->us_yuan_at_date,2);
+                                                        echo number_format($timi2,2).' ¥ at '.number_format($price->us_yuan_at_date,2);
                                         }
                                     
                                         @endphp
@@ -107,7 +108,7 @@ $config["lengthMenu"] = [ 20, 50, 100, 500];
                                                               
                                     elseif($price->price_us!=0 and (!is_null($price->us_yuan_at_date) and $price->us_yuan_at_date!=0)) // einai dolario
                                                     {
-                                                        $timi=$price->price_us*$price->us_yuan_at_date/$rate_usd_cny; 
+                                                        $timi=$price->price_us*$price->us_yuan_at_date/$rate_usd_cny; // $us_yuan_at_date = old price, $rate_usd_cny = today's price
                                                         echo number_format($timi,2)." $";
 
                                                     }
@@ -115,15 +116,20 @@ $config["lengthMenu"] = [ 20, 50, 100, 500];
                             @endphp
                                 
                                     </td>
+
+                                    <td>
+
+                                    </td>
+
                                     <td>
                                         <!--   <a id="{{ $price->id }}" href=@php echo url("/price_edit_form?price={$price->id}"); @endphp><button class="btn btn-xs btn-default text-primary mx-1 shadow" onclick="getMessage()" title="Edit"><i class="fa fa-lg fa-fw fa-pen"></i></button></a>  -->
-                                            <button class="btn btn-xs btn-default text-primary mx-1 shadow"    data-toggle="modal" data-target="#priceeditform" title="Edit"    onclick="editprice({{$price->id}})" title="Details"><i class="fa fa-lg fa-fw fa-eye"></i></button> 
+                                            <button class="btn btn-xs btn-default text-primary shadow m-1"    data-toggle="modal" data-target="#priceeditform" title="View"    onclick="editprice({{$price->id}})" title="Details"><i class="fa fa-lg fa-eye m-1"></i></button> 
 @if($price->path_to_attachments!="")
-                                            <a  id="{{ $price->id }}" target="_blank" href=@php echo url("{$price->path_to_attachments}"); @endphp><button class="btn btn-xs btn-default text-teal mx-1 shadow"  title="Show Document"><i style ="color:red;" class="fa fa-lg fa-fw fa-file-pdf"></i></button></a>
+                                            <a  id="{{ $price->id }}" target="_blank" href=@php echo url("{$price->path_to_attachments}"); @endphp><button class="btn btn-xs btn-default text-teal shadow m-1"  title="Show Document"><i style ="color:red;" class="fa fa-lg fa-file-pdf m-1"></i></button></a>
                                    @else
-                                  <button class="btn btn-xs btn-default text-teal mx-1 shadow"  title="Show Document"><i style ="color:grey;" class="fa fa-lg fa-fw fa-file-pdf"></i></button>
+                                  <button class="btn btn-xs btn-default text-teal shadow m-1"  title="Show Document"><i style ="color:grey;" class="fa fa-lg fa-fw fa-file-pdf"></i></button>
                                    @endif
-                                            <a onclick="return confirm('Delete item?');" id="trash" href=@php echo url("/price_delete_form?priceid={$price->id}"); @endphp><button class="btn btn-xs btn-default text-primary mx-1 shadow"   title="Trash"><i class="fa fa-lg fa-fw fa-trash"></i></button></a> 
+                                            <a onclick="return confirm('Delete item?');" id="trash" href=@php echo url("/price_delete_form?priceid={$price->id}"); @endphp><button class="btn btn-xs btn-default text-primary shadow m-1"   title="Trash"><i class="fa fa-lg fa-trash m-1"></i></button></a> 
                                         </td></tr>
                             @endforeach
            </x-adminlte-datatable>

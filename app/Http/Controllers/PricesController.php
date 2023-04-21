@@ -29,6 +29,8 @@ class PricesController extends Controller
         $packing = $request->input('packing');
         $packingqty = isset($request->packingqty)?$request->input('packingqty'):"NA";
         $us_yuan_at_date = floatval($request->input('us_yuan_at_date'));
+        $eur_yuan_at_date = floatval($request->input('eur_yuan_at_date'));
+        $eur_us_at_date = floatval($request->input('eur_us_at_date'));
         $fixed_price = isset($request->fixed_price);
         $is_active=true;
         $comments = isset($request->comments)?$request->input('comments'):"";
@@ -76,6 +78,8 @@ else
             price_us,
             price_yuan,
             us_yuan_at_date,
+            eur_yuan_at_date,
+            eur_us_at_date,
             is_active,
             packingqty,
             comments,
@@ -84,7 +88,7 @@ else
            ) values
         (?,?,?,?,?,
         ?,?,?,?,?,
-        ?,?,?
+        ?,?,?,?,?
         )', 
         [''.
          $offer_type
@@ -102,6 +106,10 @@ else
          $price_yuan
          .'', ''.
          $us_yuan_at_date
+         .'', ''.
+         $eur_yuan_at_date
+         .'', ''.
+         $eur_us_at_date
          .'', ''.
          $is_active
          .'', ''.

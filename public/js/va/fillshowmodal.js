@@ -20,6 +20,13 @@ function editprice(name) {
                         $("#price_update").prop( "disabled", true );
                         $('#us_yuan_at_date_update').val(value.us_yuan_at_date); 
                         $("#us_yuan_at_date_update").prop( "disabled", true );
+
+                        $('#eur_yuan_at_date_update').val(value.eur_yuan_at_date); 
+                        $("#eur_yuan_at_date_update").prop( "disabled", true );
+
+                        $('#eur_us_at_date_update').val(value.eur_us_at_date); 
+                        $("#eur_us_at_date_update").prop( "disabled", true );
+
                         $('#offer_type_update').val(value.offer_type);
                         $('#price_capture_date_update').val(value.price_capture_date); 
                         $("#price_capture_date_update").prop( "disabled", true );
