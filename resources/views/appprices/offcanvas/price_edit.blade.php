@@ -97,10 +97,10 @@
 
 
         <div class="col-md-4">
-                        <div class="form-group">
-                                <label for="us_yuan_at_date_update">Ex. Rate $ to ¥</label>
-                                <input     type="text" class="form-control" name="us_yuan_at_date_update" id="us_yuan_at_date_update"     >
-                        </div>
+                <div class="form-group">
+                        <label for="us_yuan_at_date_update">Ex. Rate $ to ¥</label>
+                        <input     type="text" class="form-control" name="us_yuan_at_date_update" id="us_yuan_at_date_update"     >
+                </div>
         </div>
 
         <div class="col-md-4 ">

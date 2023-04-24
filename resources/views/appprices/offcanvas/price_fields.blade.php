@@ -80,28 +80,37 @@
     <div class="row my-3">
 
 
-        <div class="col-md-6 ">
+        <div class="col-md-12">
         <label for="price">Price</label>
-                    <div class="input-group ">
-                                        <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="currency_sign">$</span>
-                                        </div>
-                                        <input type="text" class="form-control {{-- form-control-lg --}}" aria-label="Amount (to the nearest dollar)" name="price" id="price">
+                    <div class="input-group">
+                            <select class="custom-select col-5 bg-light" name="currencysign">
+                                <option value="usd">USD ($)</option>
+                                <option value="yuan">Yuan (¥)</option>
+                                <option value="eur">Euro (€)</option>
+                            </select> 
+                            {{-- <div class="input-group-prepend">
+                                        <span class="input-group-text" id="currency_sign">$</span>
+                            </div> --}}
+                            <input type="text" class="form-control col-7" aria-label="Amount (to the nearest dollar)" name="price" id="price">
                     </div>
     </div>
 
-        <div class="col-md-6 px-4">
-        <label for="currencyusd" class="m-0">Currency</label>
-                    <div class="form-check">
+        {{-- <div class="col-md-6 px-4">
+        <label for="currencyusd" class="m-0">Currency</label> --}}
+                    {{-- <div class="form-check">
                             <input class="form-check-input currencysign" type="radio" name="currencysign" id="currencyusd" value="usd" checked>
                             <label class="form-check-label" for="currencyusd">USD($)</label>
                     </div>
                     <div class="form-check">
                                 <input class="form-check-input currencysign" type="radio" name="currencysign" id="currencyyuan" value="yuan">
-                                <label class="form-check-label"  for="currencyyuan">Yuan(¥)</label>
-                                
+                                <label class="form-check-label" for="currencyyuan">Yuan(¥)</label>                    
                     </div>  
-        </div>
+                    <div class="form-check">
+                        <input class="form-check-input currencysign" type="radio" name="currencysign" id="currencyeur" value="eur">
+                        <label class="form-check-label" for="currencyeur">Euro(€)</label>          
+                    </div>  --}}
+
+        {{-- </div> --}}
                 
 
 

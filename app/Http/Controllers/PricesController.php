@@ -35,22 +35,32 @@ class PricesController extends Controller
         $is_active=true;
         $comments = isset($request->comments)?$request->input('comments'):"";
         $created_by=auth()->user()->id;
-if ($request->currencysign==="yuan")
-{
-        $price_yuan = floatval($request->input('price'));
-        $price_us = 0.0;
-}
-else
-{
-        $price_us = floatval($request->input('price'));
-        $price_yuan = 0.0;
-}
+
+
+        if ($request->currencysign==="yuan")
+        {
+                $price_yuan = floatval($request->input('price'));
+                $price_us = 0.0;
+                $price_eur = 0.0;
+        }
+        elseif ($request->currencysign==="usd")
+        {
+                $price_us = floatval($request->input('price'));
+                $price_yuan = 0.0;
+                $price_eur = 0.0;
+        }
+        elseif ($request->currencysign==="eur")
+        {
+                $price_eur = floatval($request->input('price'));
+                $price_yuan = 0.0;
+                $price_us = 0.0;
+        }
 
 
 
 
 
-//dd($path);
+        //dd($path);
         if($request->hasFile('proovingdoc'))
         { 
                 $request->validate(['proovingdoc' => 'required|mimes:pdf,xlx,csv|max:5000',]);
@@ -67,7 +77,7 @@ else
 
 
 
-
+        
         $insert_result=DB::insert('insert into track_prices  
         (
             offer_type,
@@ -77,6 +87,7 @@ else
             packing,
             price_us,
             price_yuan,
+            price_eur,
             us_yuan_at_date,
             eur_yuan_at_date,
             eur_us_at_date,
@@ -87,7 +98,7 @@ else
             path_to_attachments
            ) values
         (?,?,?,?,?,
-        ?,?,?,?,?,
+        ?,?,?,?,?,?,
         ?,?,?,?,?
         )', 
         [''.
@@ -104,6 +115,8 @@ else
          $price_us
          .'', ''.
          $price_yuan
+         .'', ''.
+         $price_eur
          .'', ''.
          $us_yuan_at_date
          .'', ''.
@@ -132,9 +145,9 @@ else
 
         
 
-
+        
         return redirect()->route('price_tracking');
-
+        
         
     }
 

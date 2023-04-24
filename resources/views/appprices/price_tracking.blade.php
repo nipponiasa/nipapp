@@ -38,7 +38,18 @@ $heads_prices = [
 ];
 $config = [
     'order' => [[1, 'asc']],
-    'columns' => [null, null,null, null, null, null,null,null,null, ['orderable' => false]],
+    'columns' => [
+        ["width"=>"25ch"], 
+        ["width"=>"15ch"], 
+        ["width"=>"15ch"], 
+        null, 
+        null, 
+        ["width"=>"15ch"], 
+        ["className"=>"text-right"],
+        ["className"=>"text-right"], 
+        ["className"=>"text-right"],
+        ['orderable' => false]],
+    'autoWidth' => false,
 ];
        
 

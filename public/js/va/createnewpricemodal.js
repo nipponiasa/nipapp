@@ -29,16 +29,18 @@
 
 
 
-          $("#currencyusd").change(function() {
+          $("#currencyusd").on('click',function() {
             $('#currency_sign').text("$");
             //$("#us_yuan_at_date").prop( "disabled",true);
           });
-    
-
-          $("#currencyyuan").change(function() {
+          $("#currencyyuan").on('click',function() {
             $('#currency_sign').text("¥");
-            $("#us_yuan_at_date").prop( "disabled",false);
-                      });
+            // $("#us_yuan_at_date").prop( "disabled",false);
+           });
+           $("#currencyeur").on('click',function() {
+            $('#currency_sign').text("€");
+            // $("#us_yuan_at_date").prop( "disabled",false);
+           });
 
    
 

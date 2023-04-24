@@ -37,16 +37,20 @@ function editprice(name) {
                         $("#order_name_update").prop( "disabled", true );
                         $('#packingqtyupdate').val(value.packingqty);
                         $("#packingqtyupdate").prop( "disabled", true );
+
                         if (value.price_us>0) {
                             $('#price_update').val(value.price_us);
                             $('#currencysignupdate').text("$");
                           } 
-
-
-                          if (value.price_yuan>0) {
+                        if (value.price_yuan>0) {
                             $('#price_update').val(value.price_yuan);
                             $('#currencysignupdate').text("¥");
-                          } 
+                        } 
+                        if (value.price_eur>0) {
+                            $('#price_update').val(value.price_eur);
+                            $('#currencysignupdate').text("€");
+                        }
+
 
                           if (value.fixed_price>0) {
                             $('#fixed_price_update').prop( "checked", true );
