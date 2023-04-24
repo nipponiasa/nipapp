@@ -48,7 +48,8 @@ $config = [
         ["className"=>"text-right"],
         ["className"=>"text-right"], 
         ["className"=>"text-right"],
-        ['orderable' => false]],
+        ['orderable' => false, 'className' => "text-center" ]
+    ],
     'autoWidth' => false,
 ];
        
@@ -93,45 +94,62 @@ $config["lengthMenu"] = [ 20, 50, 100, 500];
                                         <td>{{$price->price_capture_date}}</td>
                                         <td>{{$price->offer_type}} {{$price->order_name}}</td>
                                         <td>{{$price->packing}} - {{$price->packingqty}}</td>
+
+
+                                        {{-- Exact Offer Price --}}
                                         <td align="right">
-                                        @php    
-                                        if( $price->price_us!=0) 
-                                        {
-                                            $timi2=$price->price_us;
-                                                        echo number_format($timi2,2).' $ at '.number_format($price->us_yuan_at_date,2);
-                                        }
-                                        elseif( $price->price_yuan!=0)
-                                        {
-                                            $timi2=$price->price_yuan;
-                                                        echo number_format($timi2,2).' ¥ at '.number_format($price->us_yuan_at_date,2);
-                                        }
-                                    
-                                        @endphp
-                                    
-                                    </td>
-                                        <td align="right">
-                            @php 
-                                    if((is_null($price->price_us) or $price->price_us===0.0) and (!is_null($price->us_yuan_at_date) and $price->us_yuan_at_date!=0)) //einai yuan
+                                            @php    
+                                                if( $price->price_us!=0) 
+                                                {
+                                                    $timi2=$price->price_us;
+                                                                echo number_format($timi2,2).' $ at '.number_format($price->us_yuan_at_date,2);
+                                                }
+                                                elseif( $price->price_yuan!=0)
+                                                {
+                                                    $timi2=$price->price_yuan;
+                                                                echo number_format($timi2,2).' ¥ at '.number_format($price->us_yuan_at_date,2);
+                                                }
+                                        
+                                            @endphp
+                                        
+                                        </td>
+
+
+                                    {{-- Caclculated Price --}}
+                                    <td align="right">
+                                        @php 
+                                        if((is_null($price->price_us) or $price->price_us===0.0) and (!is_null($price->us_yuan_at_date) and $price->us_yuan_at_date!=0)) //einai yuan
                                                     {
                                                         $timi=$price->price_yuan/$price->us_yuan_at_date; 
                                                         echo number_format($timi,2)." $";
                                                     }
                                                               
-                                    elseif($price->price_us!=0 and (!is_null($price->us_yuan_at_date) and $price->us_yuan_at_date!=0)) // einai dolario
+                                        elseif($price->price_us!=0 and (!is_null($price->us_yuan_at_date) and $price->us_yuan_at_date!=0)) // einai dolario
                                                     {
                                                         $timi=$price->price_us*$price->us_yuan_at_date/$rate_usd_cny; // $us_yuan_at_date = old price, $rate_usd_cny = today's price
                                                         echo number_format($timi,2)." $";
 
                                                     }
                                     
-                            @endphp
+                                        @endphp
                                 
                                     </td>
 
+                                    {{-- Eur Column --}}
                                     <td>
-
+                                        @php 
+                                        if (isset($price->price_eur)&&$price->price_eur!=0)
+                                        {
+                                            echo number_format($price->price_eur,2)." €";
+                                        }
+                                        else
+                                        {
+                                            echo "";
+                                        }
+                                        @endphp
                                     </td>
 
+                                    {{-- Actions --}}
                                     <td>
                                         <!--   <a id="{{ $price->id }}" href=@php echo url("/price_edit_form?price={$price->id}"); @endphp><button class="btn btn-xs btn-default text-primary mx-1 shadow" onclick="getMessage()" title="Edit"><i class="fa fa-lg fa-fw fa-pen"></i></button></a>  -->
                                             <button class="btn btn-xs btn-default text-primary shadow m-1"    data-toggle="modal" data-target="#priceeditform" title="View"    onclick="editprice({{$price->id}})" title="Details"><i class="fa fa-lg fa-eye m-1"></i></button> 

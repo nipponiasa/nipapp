@@ -81,6 +81,8 @@
             
             </div>
 
+            
+            <hr>
 
 
             <label for="us_yuan_at_date">Price</label>
@@ -123,7 +125,7 @@
 
 
 
-
+        <hr>
 
 
             <div class="row">
@@ -139,22 +141,9 @@
             <div class="row">
             <div class="col-md-12">
                 <label for="commentsupdate">Comments</label>
-            </div>
-            </div>
-
-
-
-
-            <div class="row">
-                        <div class="col-md-12">
                                           <div class="form-group">
                                              
-                                                <textarea id="commentsupdate" name="commentsupdate" rows="3" cols="48" disabled></textarea>
-
-
-
-
-
+                                                <textarea id="commentsupdate" name="commentsupdate" rows="3" style="width:100%" disabled></textarea>
 
                                              
                                           </div>

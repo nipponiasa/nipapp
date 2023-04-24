@@ -77,22 +77,23 @@
 
     {{-- PRICES --}}
 
-    <div class="row my-3">
-
+    <div class="row">
 
         <div class="col-md-12">
-        <label for="price">Price</label>
-                    <div class="input-group">
-                            <select class="custom-select col-5 bg-light" name="currencysign">
-                                <option value="usd">USD ($)</option>
-                                <option value="yuan">Yuan (¥)</option>
-                                <option value="eur">Euro (€)</option>
-                            </select> 
-                            {{-- <div class="input-group-prepend">
-                                        <span class="input-group-text" id="currency_sign">$</span>
-                            </div> --}}
-                            <input type="text" class="form-control col-7" aria-label="Amount (to the nearest dollar)" name="price" id="price">
-                    </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <div class="input-group">
+                        <select class="custom-select col-5 bg-light" name="currencysign">
+                            <option value="usd">USD ($)</option>
+                            <option value="yuan">Yuan (¥)</option>
+                            <option value="eur">Euro (€)</option>
+                        </select> 
+                        {{-- <div class="input-group-prepend">
+                                    <span class="input-group-text" id="currency_sign">$</span>
+                        </div> --}}
+                        <input type="text" class="form-control col-7" aria-label="Amount (to the nearest dollar)" name="price" id="price">
+                </div>
+            </div>
     </div>
 
         {{-- <div class="col-md-6 px-4">
@@ -120,37 +121,38 @@
 
     {{-- CURRENCY RATES --}}
 
-    <div class="my-2">
-        <div class="d-flex">
-            <label for="prices" class="m-0">Currency Rates<span title="This is the exchange rate given by the factory, or if this is not applicable use the exchange rate of the date of the offer." style="color:blue;">&#9432;</span></label>
-            {{-- <button class="btn btn-link text-info p-0 mx-4" type="button">Fetch rates</button> --}}
-            <button id="fetchRates" class="btn btn-info btn-sm mx-4 py-0" type="button">Fill rates</button>
-            {{-- type default = submit form! --}}
-        </div>
-    <div class="row px-4 my-1">
+    <div class="row">
+        <div class="col-md-12">
 
-        <div class="col-md-4">
-            <div class="form-group d-flex flex-column">
-                <label for="us_yuan_at_date" class="m-0 font-weight-normal text-center">Rate $ to ¥ </label>
-                <input type="text" class="form-control text-center" name="us_yuan_at_date" id="us_yuan_at_date">
+            <div class="d-flex my-1">
+                <label for="prices" class="m-0">Currency Rates<span title="This is the exchange rate given by the factory, or if this is not applicable use the exchange rate of the date of the offer." style="color:blue;">&#9432;</span></label>
+                {{-- <button class="btn btn-link text-info p-0 mx-4" type="button">Fetch rates</button> --}}
+                <button id="fetchRates" class="btn btn-info btn-sm mx-4 py-0" type="button">Fill rates</button>
+                {{-- type default = submit form! --}}
             </div>
-        </div>  
-        
-        <div class="col-md-4 ">
-            <div class="form-group d-flex flex-column">
-                <label for="eur_yuan_at_date" class="m-0 font-weight-normal text-center">Rate € to ¥ </label>
-                <input type="text" class="form-control text-center" name="eur_yuan_at_date" id="eur_yuan_at_date">
-            </div>
-        </div>  
 
-        <div class="col-md-4 ">
-            <div class="form-group d-flex flex-column">
-                <label for="eur_us_at_date" class="m-0 font-weight-normal text-center">Rate € to $ </label>
-                <input type="text" class="form-control text-center" name="eur_us_at_date" id="eur_us_at_date">
-            </div>
-        </div>  
+            <div class="row px-3">
+                    <div class="col-md-4">
+                        <div class="form-group d-flex flex-column">
+                            <label for="us_yuan_at_date" class="m-0 font-weight-normal text-center">Rate $ to ¥ </label>
+                            <input type="text" class="form-control text-center" name="us_yuan_at_date" id="us_yuan_at_date">
+                        </div>
+                    </div>  
+                    <div class="col-md-4 ">
+                        <div class="form-group d-flex flex-column">
+                            <label for="eur_yuan_at_date" class="m-0 font-weight-normal text-center">Rate € to ¥ </label>
+                            <input type="text" class="form-control text-center" name="eur_yuan_at_date" id="eur_yuan_at_date">
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-group d-flex flex-column">
+                            <label for="eur_us_at_date" class="m-0 font-weight-normal text-center">Rate € to $ </label>
+                            <input type="text" class="form-control text-center" name="eur_us_at_date" id="eur_us_at_date">
+                        </div>
+                    </div>  
 
-    </div> 
+             </div> 
+    </div>
 
 </div>
 
@@ -174,7 +176,7 @@
 
 
 
-    <div class="row">
+    <div class="row my-1">
                 <div class="col-md-12 ">
                                   <div class="form-group">
                                         <label for="proovingdoc">Attach info (pdf files only)</label>
