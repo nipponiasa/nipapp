@@ -18,13 +18,15 @@
 @php
 $heads_client_current = [ 
   ['label' => 'Model'],
-  ['label' => '2020'],
-  ['label' => ''],
+//   ['label' => '2020'],
+//   ['label' => ''],
   ['label' => '2021'],
   ['label' => ''],
   ['label' => '2022'],
   ['label' => ''],
   ['label' => '2023'],
+  ['label' => ''],
+  ['label' => '2024'],
   ['label' => ''],
   ['label' => 'Total'],
   ['label' => ''],

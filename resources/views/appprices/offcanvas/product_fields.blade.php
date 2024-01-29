@@ -22,6 +22,7 @@
                
           <option value="ATUL">ATUL</option>
           <option value="BASHAN">BASHAN</option>
+          <option value="BENOD">BENOD</option>
           <option value="COWELLS">COWELLS</option>
           <option value="DAYANG">DAYANG</option>
           <option value="DOOHAN">DOOHAN</option>
@@ -32,6 +33,7 @@
           <option value="JIASI">JIASI</option>
           <option value="JINCHENG">JINCHENG</option>
           <option value="KAITONG">KAITONG</option>
+          <option value="KAMAX">KAMAX</option>
           <option value="LIFAN">LIFAN</option>
           <option value="LIMA">LIMA</option>
           <option value="NANILIAN">NANILIAN</option>
@@ -86,10 +88,11 @@
     <div class="form-group">    
  <select class="form-control" aria-label="Default select example" name="country" id="country">
                 <option value="Generic" selected>Generic</option>
+                <option value="AL">AL</option>
                 <option value="BE">BE</option>
                 <option value="CY">CY</option>
-                <option value="FR">FR</option>
                 <option value="DR">DR</option>
+                <option value="FR">FR</option>
                 <option value="GT">GT</option>
                 <option value="NL">NL</option>
     </select>
