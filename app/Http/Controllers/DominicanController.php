@@ -15,10 +15,11 @@ class DominicanController extends Controller
      
 
 
-//WHERE relcode!=altcode AND (NOT altcode=\"BDA\") AND (NOT altcode=\"NFx CMF\") AND (NOT altcode=\"CMF\") AND (NOT altcode=\"PAC\") AND (NOT altcode=\"TTH\") AND (NOT altcode=\"NBx\")  AND (NOT altcode=\"APK\")AND (NOT altcode=\"YAC\")  AND (NOT altcode=\"IPC\") AND (NOT altcode=\"ZVC\") 
-
-$client_list= DB::select("SELECT MAX(gxname) as gxname,MAX(relcode) AS relcode,MAX(altcode) AS altcode, IF(relcode=altcode or relcode=\"\", altcode, concat(relcode,\",\",altcode)) as codename 
-FROM `sales_year_rd` WHERE (NOT altcode=\"BDA\") AND (NOT altcode=\"MID\") AND (NOT altcode=\"TAD\") AND (NOT altcode=\"NFx CMF\") AND (NOT altcode=\"CMF\") AND (NOT altcode=\"PAC\") AND (NOT altcode=\"TTH\") AND (NOT altcode=\"NBx\")  AND (NOT altcode=\"APK\")AND (NOT altcode=\"YAC\")  AND (NOT altcode=\"IPC\") AND (NOT altcode=\"ZVC\") GROUP BY altcode,codename ; ");
+        $client_list= DB::select(
+            " SELECT MAX(gxname) as gxname,MAX(relcode) AS relcode,MAX(altcode) AS altcode, IF(relcode=altcode or relcode='', altcode, concat(relcode,',',altcode)) as codename 
+            FROM `sales_year_rd` WHERE RIGHT(altcode, 1) = 'D' AND altcode NOT IN ('MID', 'TAD')
+            GROUP BY altcode,codename ; 
+        ");
 
 
 

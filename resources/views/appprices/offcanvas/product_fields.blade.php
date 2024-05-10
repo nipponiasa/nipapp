@@ -38,7 +38,9 @@
           <option value="LIMA">LIMA</option>
           <option value="NANILIAN">NANILIAN</option>
           <option value="NIPPUESTO">NIPPUESTO</option>
+          <option value="PGO">PGO</option>
           <option value="QINGQI">QINGQI</option>
+          <option value="SENLONG">SENLONG</option>
           <option value="SHINERAY">SHINERAY</option>
           <option value="SHIWEI">SHIWEI</option>
           <option value="SUNRA" selected>SUNRA</option>
@@ -90,11 +92,13 @@
                 <option value="Generic" selected>Generic</option>
                 <option value="AL">AL</option>
                 <option value="BE">BE</option>
+                <option value="BE">CN</option>
                 <option value="CY">CY</option>
                 <option value="DR">DR</option>
                 <option value="FR">FR</option>
                 <option value="GT">GT</option>
                 <option value="NL">NL</option>
+                <option value="DR">TW</option>
     </select>
     </div>     
     </div>
