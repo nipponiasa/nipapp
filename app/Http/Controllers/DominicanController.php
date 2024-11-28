@@ -17,7 +17,7 @@ class DominicanController extends Controller
 
         $client_list= DB::select(
             " SELECT MAX(gxname) as gxname,MAX(relcode) AS relcode,MAX(altcode) AS altcode, IF(relcode=altcode or relcode='', altcode, concat(relcode,',',altcode)) as codename 
-            FROM `sales_year_rd` WHERE RIGHT(altcode, 1) = 'D' AND altcode NOT IN ('MID', 'TAD')
+            FROM `sales_year_rd` WHERE RIGHT(altcode, 1) = 'D' AND altcode NOT IN ('MID', 'TAD', 'IND')
             GROUP BY altcode,codename ; 
         ");
 
@@ -98,20 +98,23 @@ public function customer_altcode($current_customer)
 
  switch ($current_customer) {
     case 'DJD':
-      $customer_alt_code='DID';
-      break;
+        $customer_alt_code='DID';
+        break;
     case 'GAD':
-      $customer_alt_code='TAD';
-      break;
+        $customer_alt_code='TAD';
+        break;
     case 'MJD':
-      $customer_alt_code='MID';
-      break;
+        $customer_alt_code='MID';
+        break;
     case 'MPD':
         $customer_alt_code='MRD';
-      break;
+        break;
     case 'RMD':
         $customer_alt_code='RJD';
-      break;
+        break;
+    case 'SND':
+        $customer_alt_code='IND';
+        break;
     default:
     $customer_alt_code=$current_customer;
    } 
