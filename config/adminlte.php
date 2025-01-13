@@ -327,22 +327,22 @@ return [
         ],
 
 
-        ['header' => 'Guatemala',
-        ],
-        [
-            'text'    => 'Reports',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'Units Sold',
-                    'url'  => 'units_sales_capetown?year='.idate("Y").'&month='.idate("m"),
-                ],
-                [
-                    'text' => 'Sales per Distributor',
-                    'url'  => 'units_sales_capetown_warehouse?bodega=0&year='.idate("Y").'&month='.idate("m"),
-                ],
-            ],
-        ],
+        // ['header' => 'Guatemala',
+        // ],
+        // [
+        //     'text'    => 'Reports',
+        //     'icon'    => 'fas fa-fw fa-share',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Units Sold',
+        //             'url'  => 'units_sales_capetown?year='.idate("Y").'&month='.idate("m"),
+        //         ],
+        //         [
+        //             'text' => 'Sales per Distributor',
+        //             'url'  => 'units_sales_capetown_warehouse?bodega=0&year='.idate("Y").'&month='.idate("m"),
+        //         ],
+        //     ],
+        // ],
 
 
         ['header' => 'Dom. Republic',
