@@ -44,6 +44,7 @@
           <option value="SHINERAY">SHINERAY</option>
           <option value="SHIWEI">SHIWEI</option>
           <option value="SUNRA" selected>SUNRA</option>
+          <option value="SWEETRICH" >SWEETRICH</option>
           <option value="TIANYING">TIANYING</option>
           <option value="VIGOROUS">VIGOROUS</option>
           <option value="YINGANG">YINGANG</option>
