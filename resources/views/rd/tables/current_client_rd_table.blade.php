@@ -1,83 +1,48 @@
 <x-adminlte-datatable id="table_invoices" :heads="$heads_client_current" :config="$configsales"  striped>
 @php
-$total_t_2023=0;
-$total_t_2024=0;
-$total_t_2025=0;
-$total_t_2026=0;
+$years = [$current_year - 3, $current_year - 2, $current_year - 1, $current_year];
 
+$total_t = array_fill_keys($years, 0);
+$total_u = array_fill_keys($years, 0);
 
-$total_u_2023=0;
-$total_u_2024=0;
-$total_u_2025=0;
-$total_u_2026=0;
+$g_total_t = 0;
+$g_total_u = 0;
 
-$total_t=0;
-$total_u=0;
+foreach($sales_table as $sale => $key) {
 
-$g_total_t=0;
-$g_total_u=0;
-                                 
-foreach($sales_table as $sale=>$key) {
+    $row_t = 0;
+    $row_u = 0;
+    foreach($years as $year) {
+        $row_t += array_key_exists($year, $key) ? $key[$year]['t'] : 0;
+        $row_u += array_key_exists($year, $key) ? $key[$year]['u'] : 0;
+        $total_t[$year] += array_key_exists($year, $key) ? $key[$year]['t'] : 0;
+        $total_u[$year] += array_key_exists($year, $key) ? $key[$year]['u'] : 0;
+    }
+    $g_total_t += $row_t;
+    $g_total_u += $row_u;
 
-
-//rows totals
-$total_t=(array_key_exists('2023',$key)?$key[2023]['t']:0)+(array_key_exists('2024',$key)?$key[2024]['t']:0)+(array_key_exists('2025',$key)?$key[2025]['t']:0)+(array_key_exists('2026',$key)?$key[2026]['t']:0);
-$total_u=(array_key_exists('2023',$key)?$key[2023]['u']:0)+(array_key_exists('2024',$key)?$key[2024]['u']:0)+(array_key_exists('2025',$key)?$key[2025]['u']:0)+(array_key_exists('2026',$key)?$key[2026]['u']:0);
-$g_total_t+=$total_t;
-$g_total_u+=$total_u;
-
-//rows totals
-
-$total_t_2023+=(array_key_exists('2023',$key)?$key[2023]['t']:0);
-$total_t_2024+=(array_key_exists('2024',$key)?$key[2024]['t']:0);
-$total_t_2025+=(array_key_exists('2025',$key)?$key[2025]['t']:0);
-$total_t_2026+=(array_key_exists('2026',$key)?$key[2026]['t']:0);
-
-$total_u_2023+=(array_key_exists('2023',$key)?$key[2023]['u']:0);
-$total_u_2024+=(array_key_exists('2024',$key)?$key[2024]['u']:0);
-$total_u_2025+=(array_key_exists('2025',$key)?$key[2025]['u']:0);
-$total_u_2026+=(array_key_exists('2026',$key)?$key[2026]['u']:0);
-
-
-
-
-$total_u=(array_key_exists('2023',$key)?$key[2023]['u']:0)+(array_key_exists('2024',$key)?$key[2024]['u']:0)+(array_key_exists('2025',$key)?$key[2025]['u']:0)+(array_key_exists('2026',$key)?$key[2026]['u']:0);
-
-
-
-
-echo '<tr>              
-       <td>'.$sale.'</td>
-       <td >'.number_format((array_key_exists('2023',$key)?$key[2023]['t']:0),2).'$</td>
-       <td ><h5><span style="width:40px;" class="badge badge-info">'.(array_key_exists('2023',$key)?$key[2023]['u']:0).'</span></h5></td>
-       <td >'.number_format((array_key_exists('2024',$key)?$key[2024]['t']:0),2).'$</td>
-       <td ><h5><span style="width:40px;" class="badge badge-info">'.(array_key_exists('2024',$key)?$key[2024]['u']:0).'</span></h5></td>
-       <td >'.number_format((array_key_exists('2025',$key)?$key[2025]['t']:0),2).'$</td>
-       <td ><h5><span style="width:40px;" class="badge badge-info">'.(array_key_exists('2025',$key)?$key[2025]['u']:0).'</span></h5></td>
-       <td >'.number_format((array_key_exists('2026',$key)?$key[2026]['t']:0),2).'$</td>
-       <td ><h5><span style="width:40px;" class="badge badge-info">'.(array_key_exists('2026',$key)?$key[2026]['u']:0).'</span></h5></td>
-       <td >'.number_format($total_t,2).'$</td>
-       <td><h5><span style="width:40px;" class="badge badge-info">'.$total_u.'</span></h5></td>
-      </tr>';
-
-   
- 
+    $row = '<tr><td>'.$sale.'</td>';
+    foreach($years as $year) {
+        $t = array_key_exists($year, $key) ? $key[$year]['t'] : 0;
+        $u = array_key_exists($year, $key) ? $key[$year]['u'] : 0;
+        $row .= '<td>'.number_format($t, 2).'$</td>';
+        $row .= '<td><h5><span style="width:40px;" class="badge badge-info">'.$u.'</span></h5></td>';
+    }
+    $row .= '<td>'.number_format($row_t, 2).'$</td>';
+    $row .= '<td><h5><span style="width:40px;" class="badge badge-info">'.$row_u.'</span></h5></td>';
+    $row .= '</tr>';
+    echo $row;
 }
 
-echo '<tfoot><tr>
-       <td>Totals</td>
-       <td>'.number_format($total_t_2023,2).'$</td>
-       <td><h5><span style="width:40px;" class="badge badge-info">'.$total_u_2023.'</span></h5></td>
-       <td>'.number_format($total_t_2024,2).'$</td>
-       <td><h5><span style="width:40px;" class="badge badge-info">'.$total_u_2024.'</span></h5></td>
-       <td>'.number_format($total_t_2025,2).'$</td>
-       <td><h5><span style="width:40px;" class="badge badge-info">'.$total_u_2025.'</span></h5></td>
-       <td>'.number_format($total_t_2026,2).'$</td>
-       <td><h5><span style="width:40px;" class="badge badge-info">'.$total_u_2026.'</span></h5></td>
-       <td><b>'.number_format($g_total_t,2).'$</b></td>
-       <td><h5><span style="width:40px;" class="badge badge-info">'.$g_total_u.'</span></h5></td>
-       </tr></tfoot>';
-
+$footer = '<tfoot><tr><td>Totals</td>';
+foreach($years as $year) {
+    $footer .= '<td>'.number_format($total_t[$year], 2).'$</td>';
+    $footer .= '<td><h5><span style="width:40px;" class="badge badge-info">'.$total_u[$year].'</span></h5></td>';
+}
+$footer .= '<td><b>'.number_format($g_total_t, 2).'$</b></td>';
+$footer .= '<td><h5><span style="width:40px;" class="badge badge-info">'.$g_total_u.'</span></h5></td>';
+$footer .= '</tr></tfoot>';
+echo $footer;
 
 @endphp
                                            

@@ -16,15 +16,17 @@
 
 
 @php
+$current_year = (int) date('Y');        // Εδώ ορίζεται το τρέχον έτος.
+//$current_year = 2027;       // test
 $heads_client_current = [ 
   ['label' => 'Model'],
-  ['label' => '2023'],
+  ['label' => (string)($current_year - 3)],
   ['label' => ''],
-  ['label' => '2024'],
+  ['label' => (string)($current_year - 2)],
   ['label' => ''],
-  ['label' => '2025'],
+  ['label' => (string)($current_year - 1)],
   ['label' => ''],
-  ['label' => '2026'],
+  ['label' => (string)$current_year],
   ['label' => ''],
   ['label' => 'Total'],
   ['label' => ''],
