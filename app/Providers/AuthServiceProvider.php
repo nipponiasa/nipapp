@@ -66,6 +66,11 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role == 'caribe_user';
             });
 
+        /* access to Dominican Republic section */
+        Gate::define('canAccessDominicanRepublic', function($user) {
+            return in_array($user->role, ['admin', 'manager', 'caribe_user']);
+            });
+
 
 //VA
 

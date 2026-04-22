@@ -90,6 +90,33 @@ $config = [
               'scrollX'=> 400,
  ];
 
+// Για τον caribe_user, ορίζονται ξανά τα $heads και $config του πίνακα Pending Sales
+// ώστε να αφαιρεθεί η στήλη "Value" — το αντίστοιχο <td> αφαιρείται στο caribe partial.
+if(auth()->user()->role === 'caribe_user') {
+    $heads_client_pending_sales_current = [
+                  ['label' => 'Order'],
+                  ['label' => 'Model'],
+                  ['label' => 'Units'],
+                  ['label' => 'ETD'],
+                  ['label' => 'ETA'],
+                  ['label' => 'Year of contract']
+      ];
+    $config = [
+                  'columns' => [
+                                ['orderable' => true,'visible'=> true, 'className' => 'text-left wrap' ],
+                                ['orderable' => true,'className' => 'text-right'],
+                                ['orderable' => true,'className' => 'text-right'],
+                                ['orderable' => true,'className' => 'text-right','width'=> '5%'],
+                                ['orderable' => true,'className' => 'text-right'],
+                                ['orderable' => true,'className' => 'text-right'],
+                              ],
+                  'paging'=>   false,
+                  'searching'=>   false,
+                  'info'=>   false,
+                  'scrollX'=> 400,
+     ];
+}
+
 @endphp
 
 
@@ -189,7 +216,11 @@ if(array_key_exists('0',$customer_balance)){
         <div class="card-body">
 
 
-         @include('rd.tables.current_client_pending_sales_rd_table')
+         @if(auth()->user()->role === 'caribe_user')
+             @include('rd.tables.current_client_pending_sales_rd_caribe_table')
+         @else
+             @include('rd.tables.current_client_pending_sales_rd_table')
+         @endif
         
 
         </div>
@@ -242,7 +273,11 @@ if(array_key_exists('0',$customer_balance)){
         <div class="card-body">
 
 
-         @include('rd.tables.current_client_rd_table')
+         @if(auth()->user()->role === 'caribe_user')
+             @include('rd.tables.current_client_rd_caribe_table')
+         @else
+             @include('rd.tables.current_client_rd_table')
+         @endif
         
 
         </div>
@@ -277,7 +312,8 @@ if(array_key_exists('0',$customer_balance)){
 
 
 
-<!-- arxi -->
+@if(auth()->user()->role !== 'caribe_user')
+<!-- arxi diagrammatwn -->
 <div class="row">
   
 
@@ -401,7 +437,8 @@ if(array_key_exists('0',$customer_balance)){
     <!-- /.col -->
   </div>
 
- <!-- telos -->
+ <!-- telos diagrammatwn -->
+@endif
 
 
 

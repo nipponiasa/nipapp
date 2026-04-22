@@ -346,11 +346,11 @@ return [
 
 
         ['header' => 'Dom. Republic',
-        'can' => 'isAdmin' ,],
+        'can' => 'canAccessDominicanRepublic' ,],
         [
             'text'    => 'Reports',
             'icon'    => 'fas fa-fw fa-share',
-            'can' => 'isAdmin' ,
+            'can' => 'canAccessDominicanRepublic' ,
             'submenu' => [
                 [
                     'text' => 'Customers',

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Create new spare part')
+@section('title', 'Create new user')
 @section('plugins.Datatables', true)
 @section('content_header')
     <h1>New user</h1>
@@ -41,7 +41,7 @@
                 <div class="col-md-3 mb-5">
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control"  name="password" id="password">
+                  <input type="password" class="form-control"  name="password" id="password" autocomplete="new-password">
                 </div>
                 </div>
 
@@ -53,12 +53,13 @@
                 <label for="role">Role</label>
 
                 <select class="form-control"  name="role" id="role">
-                    <option value='user' >User</option>
+                    <option value='user' selected>User</option>
+                    <option value='capetown_user'>Capetown User</option>
+                    <option value='caribe_user'>Caribe User</option>
                     <option value='admin'>Admin</option>
                     <option value='manager'>Manager</option>
-                    <option value='warehouse_administrator' >Warehouse Administrator</option>
-                    <option value='marketing_user' selected>Marketing User</option>
-                    <option value='capetown_user' selected>Capetown User</option>
+                    <option value='warehouse_administrator'>Warehouse Administrator</option>
+                    <option value='marketing_user'>Marketing User</option>
                 </select>
                 </div>
 

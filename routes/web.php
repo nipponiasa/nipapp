@@ -66,8 +66,8 @@ Route::get('/list_uin', [App\Http\Controllers\UinController::class,'list_uin'])-
 
 
 //routes RD
-Route::get('/customers_rd', [App\Http\Controllers\DominicanController::class,'list_customers'])->name('list_customers')->middleware('auth');//sharepoint test
-Route::get('/current_customer/{customer_code}/{customer_altcode}', [App\Http\Controllers\DominicanController::class,'customer_show'])->name('customer_show')->middleware('auth');//sharepoint test
+Route::get('/customers_rd', [App\Http\Controllers\DominicanController::class,'list_customers'])->name('list_customers')->middleware(['auth','can:canAccessDominicanRepublic']);
+Route::get('/current_customer/{customer_code}/{customer_altcode}', [App\Http\Controllers\DominicanController::class,'customer_show'])->name('customer_show')->middleware(['auth','can:canAccessDominicanRepublic']);
 //routes RD
 
 //ajax routes

@@ -50,14 +50,13 @@
                 <div class="col-md-3 mb-5">
                 <label for="role">Role</label>
                     <select class="form-control"  name="role" id="role">
-                    <option value={{ $user_current->role }} selected></option>
-                     <option value='user' >User</option>
-                     <option value='capetown_user' >Capetown User</option>
-                     <option value='caribe_user' >Caribe User</option>
-                    <option value='admin'>Admin</option>
-                    <option value='manager'>Manager</option>
-                    <option value='warehouse_administrator' >Warehouse Administrator</option>
-                    <option value='marketing_user' selected>Marketing User</option>
+                     <option value='user' {{ $user_current->role == 'user' ? 'selected' : '' }}>User</option>
+                     <option value='capetown_user' {{ $user_current->role == 'capetown_user' ? 'selected' : '' }}>Capetown User</option>
+                     <option value='caribe_user' {{ $user_current->role == 'caribe_user' ? 'selected' : '' }}>Caribe User</option>
+                    <option value='admin' {{ $user_current->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                    <option value='manager' {{ $user_current->role == 'manager' ? 'selected' : '' }}>Manager</option>
+                    <option value='warehouse_administrator' {{ $user_current->role == 'warehouse_administrator' ? 'selected' : '' }}>Warehouse Administrator</option>
+                    <option value='marketing_user' {{ $user_current->role == 'marketing_user' ? 'selected' : '' }}>Marketing User</option>
                     </select>
                 </div>
 
