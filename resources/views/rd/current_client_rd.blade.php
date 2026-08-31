@@ -2,7 +2,7 @@
 @section('title', 'Customer')
 @section('plugins.Datatables', true)
 @section('content_header')
-        <a href="{{ URL::previous() }}">Go Back</a>
+  <a href="{{ URL::previous() }}" class="no-print">Go Back</a>
         <h1> @php echo $current_customer; @endphp </h1>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
@@ -53,7 +53,7 @@ $heads_client_current = [
  'paging'=>   false,
  'searching'=>   false,
  'info'=>   false,
- 'scrollX'=> 400,
+ 'scrollX'=> false,
  ];
 
 
@@ -79,15 +79,15 @@ $config = [
                             ['orderable' => true,'visible'=> true, 'className' => 'text-left wrap' ],
                             ['orderable' => true,'className' => 'text-right'],
                             ['orderable' => true,'className' => 'text-right'],
-                            ['orderable' => true,'className' => 'text-right','width'=> '5%'],
-                            ['orderable' => true,'className' => 'text-right','width'=> '5%'],
                             ['orderable' => true,'className' => 'text-right'],
+                            ['orderable' => true,'className' => 'text-right text-nowrap','width'=> '9%'],
+                            ['orderable' => true,'className' => 'text-right text-nowrap','width'=> '7%'],
                             ['orderable' => true,'className' => 'text-right'],
                           ],
               'paging'=>   false,
               'searching'=>   false,
               'info'=>   false,
-              'scrollX'=> 400,
+              'scrollX'=> false,
  ];
 
 // Για τον caribe_user, ορίζονται ξανά τα $heads και $config του πίνακα Pending Sales
@@ -106,14 +106,14 @@ if(auth()->user()->role === 'caribe_user') {
                                 ['orderable' => true,'visible'=> true, 'className' => 'text-left wrap' ],
                                 ['orderable' => true,'className' => 'text-right'],
                                 ['orderable' => true,'className' => 'text-right'],
-                                ['orderable' => true,'className' => 'text-right','width'=> '5%'],
-                                ['orderable' => true,'className' => 'text-right'],
+                                ['orderable' => true,'className' => 'text-right text-nowrap','width'=> '9%'],
+                                ['orderable' => true,'className' => 'text-right text-nowrap','width'=> '7%'],
                                 ['orderable' => true,'className' => 'text-right'],
                               ],
                   'paging'=>   false,
                   'searching'=>   false,
                   'info'=>   false,
-                  'scrollX'=> 400,
+                     'scrollX'=> false,
      ];
 }
 
@@ -324,7 +324,7 @@ if(array_key_exists('0',$customer_balance)){
 <div class="col-md-6">
   
 <!-- chart js -->
-<div class="card card-primary card-outline">
+<div class="card card-primary card-outline print-keep-together">
         <div class="card-header">
           <h3 class="card-title">
           <i class="far fa-chart-bar"></i>
@@ -373,7 +373,7 @@ if(array_key_exists('0',$customer_balance)){
 
     <div class="col-md-6">
       <!-- pinakas -->
-      <div class="card card-primary card-outline">
+      <div class="card card-primary card-outline print-keep-together">
         <div class="card-header">
           <h3 class="card-title">
             <i class="far fa-chart-bar"></i>
@@ -441,6 +441,29 @@ if(array_key_exists('0',$customer_balance)){
 @endif
 
 
+
+<style>
+  @media print {
+    .content-header {
+      display: block !important;
+    }
+
+    .table-responsive {
+        overflow: visible !important;
+    }
+
+    .print-keep-together {
+      break-inside: avoid-page;
+      page-break-inside: avoid;
+    }
+
+    .print-keep-together .card-header,
+    .print-keep-together .card-body {
+      break-inside: avoid-page;
+      page-break-inside: avoid;
+    }
+    }
+</style>
 
 
 
