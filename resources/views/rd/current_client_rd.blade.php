@@ -145,36 +145,46 @@ if(auth()->user()->role === 'caribe_user') {
 
 
 
-@php
-if(array_key_exists('0',$customer_balance)){
-@endphp
-<div class="row">
-<div class="col-md-3 mb-5">
-<x-adminlte-callout theme="info" title="Balance (invoiced) at date {{$customer_balance[0]->date_updated}}">
-    @php echo '<h5><span class="badge badge-primary">'.number_format($customer_balance[0]->balance,2).' '.$customer_balance[0]->currency.'</span></h5>'; @endphp
- </x-adminlte-callout>
- </div>
-
-</div>
-
-
-@php
-;} else
-
-{@endphp
-<div class="row">
-    <div class="col-md-3 mb-5">
-        <x-adminlte-callout theme="info" title="Balance (invoiced)">
-          
+<div class="mb-5">
+  @isset($customer_balance[0])
+    <div>Logistic status at date: {{$customer_balance[0]->date_updated}}</div>
+  @endisset
+    <div class="row ">
+        <x-adminlte-callout class="col-md-3 m-2 " theme="info" title="Balance (invoiced) ">
+      <h5>
+        <span class="badge badge-primary">
+          @isset($customer_balance[0]->balance)
+            {{ number_format($customer_balance[0]->balance, 2) }} {{ $customer_balance[0]->currency }}
+          @else
+            &nbsp;-&nbsp;
+          @endisset
+        </span>
+      </h5>
+        </x-adminlte-callout>
+        <x-adminlte-callout class="col-md-3 m-2 " theme="danger" title="Overdues">
+      <h5>
+        <span class="badge badge-danger">
+          @isset($customer_balance[0]->overdues)
+            {{ number_format($customer_balance[0]->overdues, 2) }} {{ $customer_balance[0]->currency }}
+          @else
+            &nbsp;-&nbsp;
+          @endisset
+        </span>
+      </h5>
+        </x-adminlte-callout>
+        <x-adminlte-callout class="col-md-3 m-2 " theme="success" title="Deposits">
+      <h5>
+        <span class="badge badge-success">
+          @isset($customer_balance[0]->deposits)
+            {{ number_format($customer_balance[0]->deposits, 2) }} {{ $customer_balance[0]->currency }}
+          @else
+            &nbsp;-&nbsp;
+          @endisset
+        </span>
+      </h5>
         </x-adminlte-callout>
     </div>
-
 </div>
-@php
-  ;
-}
-
-@endphp
 
 
 
