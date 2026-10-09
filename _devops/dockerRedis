@@ -1,0 +1,10 @@
+FROM redis:7.2
+
+RUN mkdir -p /usr/local/etc/redis
+RUN mkdir -p /var/log/redis/
+
+COPY "./_devops/configs/redis.conf" /usr/local/etc/redis/redis.conf
+
+RUN chown -R redis:redis /usr/local/etc/redis /var/log/redis/
+
+CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]

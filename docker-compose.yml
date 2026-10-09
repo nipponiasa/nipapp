@@ -3,16 +3,26 @@ services:
   bi:
     networks:
       "docker.local":
-        ipv4_address: 172.30.0.51
+        ipv4_address: 172.30.0.53
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: _devops/dockerBi
     volumes:
       - /var/www/nipponia/bi/storage:/var/www/html/storage
       - /var/www/nipponia/bi/.env:/var/www/html/.env
     deploy:
       restart_policy:
         condition: always
+  redis:
+    build: 
+      context: ./
+      dockerfile: _devops/dockerRedis
+    restart: always
+    networks:
+      "docker.local":
+        ipv4_address: 172.30.0.54
+    volumes: 
+      - "/tmp/bi_redis_cache:/data"
 networks:
   "docker.local":
     external: true
