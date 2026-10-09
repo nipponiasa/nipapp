@@ -17,7 +17,7 @@ RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-avail
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 COPY --chown=www-data:www-data . .
 
-RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+RUN composer update && composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 RUN mkdir -p storage/framework/cache \
 			 storage/framework/sessions \
 			 storage/framework/views \
