@@ -10,6 +10,7 @@ services:
     volumes:
       - /var/www/nipponia/bi/storage:/var/www/html/storage
       - /var/www/nipponia/bi/.env:/var/www/html/.env
+      - /var/www/nipponia/bi/vasi:/var/www/html/public/rxLu4_vasi
     deploy:
       restart_policy:
         condition: always
